@@ -1,18 +1,16 @@
 // https://leetcode.com/problems/is-subsequence/
 class Solution {
     public boolean isSubsequence(String s, String t) {
-        char[] sChars = s.toCharArray();
-        char[] tChars = t.toCharArray();
+        int sIndex = 0;
+        int tIndex = 0;
 
-        Arrays.sort(sChars);
-        Arrays.sort(tChars);
-
-        int sIndex = 0, tIndex = 0;
-        for(int i=0; i<s.length(); i++){
-            if(sChars[i] != tChars[i]){
-                return false;
+        while (sIndex < s.length() && tIndex < t.length()) {
+            if (s.charAt(sIndex) == t.charAt(tIndex)) {
+                sIndex++;
             }
+            tIndex++;
         }
-        return true;
+
+        return sIndex == s.length();
     }
 }
